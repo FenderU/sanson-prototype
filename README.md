@@ -1,71 +1,38 @@
-# sansonai-ex README
-
-This is the README for your extension "sansonai-ex". After writing up a brief description, we recommend including the following sections.
+# SANSON - Cybersecurity Assistant Extension for VSCode
+Version: 1.0.0 Jul 29, 2025.
+Author: Fender Urbano.
 
 ## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. Analyze bad practices that represent a security breach. Its use is limited to 50 requests per day and uses an existing model (Kimi V2).
+2. Identify which dependencies are outdated. Limited to analyzing dependencies in "package.json".
+3. Calculate the number of days since the last update for each dependency. Limited to dependencies in "package.json".
 
 ## Requirements
+**IMPORTANT**, to use the "SansonAI: Detect security gaps in the code" command, the "API_KEY" environment variable is required, there are two ways:
+1. Create a .env file and write "API_KEY=you_real_api_key_here" to it, you can get an API_KEY by https://openrouter.ai/moonshotai/kimi-k2:free/api
+2. Send an email to "fenderurbano.business@gmail.com" to request the API_KEY, you will receive an email, sign in or login to "dotenv"
+   2.1. Copy, paste and press "enter" into the terminal: npx dotenv-vault@latest pull
+   2.2. Press "y"
+   2.3. The ".env" file will be inserted into the project, you can now run the command to analyze with AI
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## How to install and use?
 
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
+### Steps: ###
+1. Open VScode
+2. Clone this repository: https://github.com/FenderU/sansonai-prototype.git
+3. Open terminal in VSCode
+4. Copy, paste and press "enter" into the terminal: npm install node-fetch
+5. Open the file: src/extension.ts
+6. Press F5
+7. Select "VS Code Extension Development"
+8. A new VSCode instance should appear
+9. In the new instance, with "Ctrl + Shift + P" you can access the commands that Sanson allows. For example: "SansonAI: Detect security gaps in the code"
+   
 ## Release Notes
-
-Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
-Initial release of ...
+Initial release of sanson extension for vscode
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+## Please share your feedback, will allow a good result 
+Email: fenderurbano.business@gmail.com
