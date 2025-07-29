@@ -1,4 +1,5 @@
 {
+  "publisher": "Fender Urbano",
   "name": "sansonai-ex",
   "displayName": "SansonAI",
   "description": "",
@@ -51,8 +52,10 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@dotenvx/dotenvx": "^1.48.3",
     "dotenv": "^17.2.1",
     "dotenv-vault": "^1.27.0",
+    "express": "^5.1.0",
     "heroku": "^8.7.1",
     "node-fetch": "^3.3.2",
     "semver": "^7.7.2"

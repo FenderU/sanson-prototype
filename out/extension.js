@@ -35,14 +35,14 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.activate = activate;
 exports.deactivate = deactivate;
-const vscode = __importStar(require("vscode"));
 const path = __importStar(require("path"));
+const dotenvx_1 = require("@dotenvx/dotenvx");
+(0, dotenvx_1.config)({ path: path.resolve(__dirname, '../.env'), debug: true });
+const API_KEY = process.env.API_KEY;
+const vscode = __importStar(require("vscode"));
 import('node-fetch');
 const fs = __importStar(require("fs"));
-//import { createServer, IncomingMessage, ServerResponse } from 'http';
 const semver = require('semver');
-require('dotenv').config();
-const DOTENV_KEY = "dotenv://:key_83973c2a057e3a1bf22b2c2e1d8bbcac7e0bfc3c24516681b7ffab3febbccd94@dotenv.org/vault/.env.vault?environment=production";
 function activate(context) {
     console.log('SansonAI active');
     context.subscriptions.push(vscode.commands.registerCommand("sansonai-ex.analyzeCode", analyzeCode), vscode.commands.registerCommand("sansonai-ex.checkDependencies", checkDependencies), vscode.commands.registerCommand("sansonai-ex.checkPeriodicity", checkPeriodicity));
@@ -53,8 +53,6 @@ async function analyzeCode() {
     if (!editor) {
         return vscode.window.showWarningMessage('There is no open file.');
     }
-    const API_KEY = process.env.API_KEY;
-    console.log(API_KEY);
     if (!API_KEY) {
         throw new Error("API_KEY no está definida. Verifica tu configuración de dotenv vault.");
     }

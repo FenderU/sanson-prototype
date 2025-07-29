@@ -1,24 +1,13 @@
-import * as vscode from 'vscode';
 import * as path from 'path';
+import { config } from '@dotenvx/dotenvx';
+
+config({ path: path.resolve(__dirname, '../.env'), debug: true });
+const API_KEY= process.env.API_KEY;
+
+import * as vscode from 'vscode';
 import('node-fetch');
 import * as fs from 'fs';
-//import { createServer, IncomingMessage, ServerResponse } from 'http';
 const semver = require('semver');
-require('dotenv').config();
-const DOTENV_KEY="dotenv://:key_83973c2a057e3a1bf22b2c2e1d8bbcac7e0bfc3c24516681b7ffab3febbccd94@dotenv.org/vault/.env.vault?environment=production";
-
-
-/*const PORT = 3000;
-	const http = require('http');
-	const server = http.createServer((req:IncomingMessage, res:ServerResponse) => {
-	res.statusCode = 200;
-	res.setHeader('Content-Type', 'text/plain');
-	res.end(`Hello ${process.env.API_KEY}`);
-	});
-
-	server.listen(PORT, () => {
-	console.log(`Server running on port:${PORT}/`);
-	});*/
 
 interface ObsoleteDependencies {
   name: string;
@@ -58,10 +47,8 @@ async function analyzeCode() {
 	const editor = vscode.window.activeTextEditor;
 	if (!editor){ return vscode.window.showWarningMessage('There is no open file.');}	
 	
-	const API_KEY=process.env.API_KEY;
-	console.log(API_KEY);
 	if (!API_KEY) {
-		throw new Error("API_KEY no está definida. Verifica tu configuración de dotenv vault.");
+		throw new Error("API_KEY is not defined. Check your dotenv vault configuration.");
 	}
 
 	const code=editor.document.getText();
@@ -161,7 +148,7 @@ async function checkDependencies(){
 
 	const packageJsonPath = path.join(workspaceFolders[0].uri.fsPath, 'package.json');	
 	if (!fs.existsSync(packageJsonPath)) {
-	vscode.window.showErrorMessage("No se encontró package.json en el proyecto.");
+	vscode.window.showErrorMessage("No package.json found in the project.");
 	return;
 	}
 
@@ -244,7 +231,7 @@ async function checkPeriodicity() {
 
 	const packageJsonPath = path.join(workspaceFolders[0].uri.fsPath, 'package.json');	
 	if (!fs.existsSync(packageJsonPath)) {
-	vscode.window.showErrorMessage("No se encontró package.json en el proyecto.");
+	vscode.window.showErrorMessage("No package.json found in the project.");
 	return;
 	}	
 
@@ -255,7 +242,7 @@ async function checkPeriodicity() {
 	const outputChannel = vscode.window.createOutputChannel("SansonAI");
 	outputChannel.clear();
 	outputChannel.show();
-	outputChannel.appendLine("Días desde última actualización de dependencias:\n");
+	outputChannel.appendLine("Days since last dependency update:\n");
 
 	for (const [name] of Object.entries(dependencies)) {
 		try {
@@ -271,12 +258,12 @@ async function checkPeriodicity() {
 			const diffDays = Math.round(Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
 			console.log(diffDays);
 
-			outputChannel.appendLine(`${name} (v${latestVersion}): ${diffDays} días desde su última actualización.`);
+			outputChannel.appendLine(`${name} (v${latestVersion}): ${diffDays} days since last update.`);
 		} else {
-			outputChannel.appendLine(`${name}: No se pudo obtener la fecha de la última versión.`);
+			outputChannel.appendLine(`${name}: The date of the latest version could not be obtained.`);
 		}
 		} catch (error) {
-		outputChannel.appendLine(`${name}: Error al obtener información de npm.`);
+		outputChannel.appendLine(`${name}: Error getting information from npm.`);
 		}
   }
 }
