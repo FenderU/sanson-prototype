@@ -1,0 +1,60 @@
+{
+  "name": "sansonai-ex",
+  "displayName": "SansonAI",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand: sansonai-ex.analyzeCode",
+    "onCommand: sansonai-ex.checkDependencies",
+    "onCommand: sansonai-ex.checkPeriodicity"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "sansonai-ex.analyzeCode",
+        "title": "SansonAI: Detect security gaps in the code"
+      },
+      {
+        "command": "sansonai-ex.checkDependencies",
+        "title": "SansonAI: Identify outdated or obsolete dependencies"
+      },
+      {
+        "command": "sansonai-ex.checkPeriodicity",
+        "title": "SansonAI: Calculate number of days since the last update of each dependency"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.102.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "dotenv-vault": "^1.27.0",
+    "heroku": "^8.7.1",
+    "node-fetch": "^3.3.2",
+    "semver": "^7.7.2"
+  }
+}
