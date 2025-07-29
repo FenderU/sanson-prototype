@@ -1,8 +1,7 @@
 import * as path from 'path';
-import { config } from '@dotenvx/dotenvx';
-
-config({ path: path.resolve(__dirname, '../.env'), debug: true });
+require('@dotenvx/dotenvx').config();
 const API_KEY= process.env.API_KEY;
+console.log(API_KEY);
 
 import * as vscode from 'vscode';
 import('node-fetch');
