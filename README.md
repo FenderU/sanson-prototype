@@ -11,9 +11,9 @@ Author: Fender Urbano.
 **IMPORTANT**, to use the "SansonAI: Detect security gaps in the code" command, the "API_KEY" environment variable is required, there are two ways:
 1. Create a .env file and write "API_KEY=you_real_api_key_here" to it, you can get an API_KEY by https://openrouter.ai/moonshotai/kimi-k2:free/api
 2. Send an email to "fenderurbano.business@gmail.com" to request the API_KEY, you will receive an email, sign in or login to "dotenv"
-- Copy, paste and press "enter" into the terminal: npx dotenv-vault@latest pull
-- Press "y"
-- The ".env" file will be inserted into the project, you can now run the command to analyze with AI
+   - Copy, paste and press "enter" into the terminal: npx dotenv-vault@latest pull
+   - Press "y"
+   - The ".env" file will be inserted into the project, you can now run the command to analyze with AI
 
 ## How to install and use?
 
