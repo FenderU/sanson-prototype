@@ -35,4 +35,4 @@ Author: Fender Urbano.
 Initial release of sanson extension for vscode
 
 ### Please share your feedback, will allow a good result 
-Email: fenderurbano.business@gmail.com
+Email: fenderurbano.personal@gmail.com
